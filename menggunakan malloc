@@ -1,0 +1,66 @@
+/*
+Nama : Dzaki Imam Fawwaz
+Nim  : 2702367486
+date : 14 okt 2023
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+// Membuat struct
+// Menggunkan typedef agar lebih mudah
+typedef struct Mahasiswa {
+    int id;
+    char nama[50];
+    char prodi[50];
+    double gpa;
+} Mhs;
+
+int main() {
+    int jumlah_mahasiswa = 10; // Jumlah maksimum mahasiswa 
+    Mhs *mahasiswa = (Mhs *)malloc(sizeof(Mhs) * jumlah_mahasiswa); // Menggunakan malloc, untuk memanipulasi memory dinamis
+    int i = 0;
+
+    if (mahasiswa == NULL) {
+        printf("Gagal mengalokasikan memori.\n"); //Validasi check
+        return 1;
+    }
+
+	// Input
+    for (i; i < 11; i++) {
+    	printf("Mahasiswa ke-%d\n",i+1);
+        printf("Masukkan ID    : ");
+        scanf("%d", &mahasiswa[i].id);
+        getchar(); 
+
+        printf("Masukkan Nama  : ");
+        fgets(mahasiswa[i].nama, sizeof mahasiswa[i].nama, stdin);
+
+        printf("Masukkan Prodi : ");
+        fgets(mahasiswa[i].prodi, sizeof mahasiswa[i].prodi, stdin);
+
+        printf("Masukkan GPA   : ");
+        scanf("%lf", &mahasiswa[i].gpa);
+        getchar(); 
+        printf("\n");
+    }
+    
+    // Output
+    printf("\nData Mahasiswa\n");
+    for (i = 0; i < 11; i++)
+    {
+    	
+    	printf("---------------------------------------\n");
+    	printf("Mahasiswa ke-%d\n",i+1);
+    	printf("----------------\n");
+        printf("Id    mahasiswa : %d\n", mahasiswa[i].id);
+        printf("Nama  mahasiswa : %s", mahasiswa[i].nama);
+        printf("Prodi mahasiswa : %s",mahasiswa[i].prodi);
+        printf("GPA   mahasiswa : %.2lf\n", mahasiswa[i].gpa);
+	}
+	
+	free(mahasiswa); // untuk membebaskan memory 
+
+    return 0;
+}
