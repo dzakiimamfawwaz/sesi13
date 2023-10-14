@@ -18,9 +18,14 @@ typedef struct Mahasiswa {
 } Mhs;
 
 int main() {
-    int jumlah_mahasiswa = 10; // Jumlah maksimum mahasiswa 
+    int jumlah_mahasiswa = 0, i = 0; 
+    
+    printf("\033[33mSelamat Datang Data Mahasiswa DZAKI \033[0m");
+    printf("\n====================================\n\n");
+    printf("Masukkan Jumlah Maximal Data Mahasiswa Yang Dibutuhkan : ");
+    scanf("%d",&jumlah_mahasiswa);
     Mhs *mahasiswa = (Mhs *)malloc(sizeof(Mhs) * jumlah_mahasiswa); // Menggunakan malloc, untuk memanipulasi memory dinamis
-    int i = 0;
+    
 
     if (mahasiswa == NULL) {
         printf("Gagal mengalokasikan memori.\n"); //Validasi check
@@ -28,8 +33,8 @@ int main() {
     }
 
 	// Input
-    for (i; i < 11; i++) {
-    	printf("Mahasiswa ke-%d\n",i+1);
+    for (i; i < jumlah_mahasiswa; i++) {
+    	printf("\nMahasiswa ke-%d\n",i+1);
         printf("Masukkan ID    : ");
         scanf("%d", &mahasiswa[i].id);
         getchar(); 
@@ -48,7 +53,7 @@ int main() {
     
     // Output
     printf("\nData Mahasiswa\n");
-    for (i = 0; i < 11; i++)
+    for (i = 0; i < jumlah_mahasiswa; i++)
     {
     	
     	printf("---------------------------------------\n");
