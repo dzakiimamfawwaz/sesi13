@@ -20,10 +20,13 @@ typedef struct Mahasiswa {
 int main() {
     int jumlah_mahasiswa = 0, i = 0; 
     
-    printf("\033[33mSelamat Datang Data Mahasiswa DZAKI \033[0m");
+    printf("\n\033[32m");
+    printf("Selamat Datang Data Mahasiswa DZAKI");
+    printf("\n\033[0m");
     printf("\n====================================\n\n");
     printf("Masukkan Jumlah Maximal Data Mahasiswa Yang Dibutuhkan : ");
     scanf("%d",&jumlah_mahasiswa);
+    
     Mhs *mahasiswa = (Mhs *)malloc(sizeof(Mhs) * jumlah_mahasiswa); // Menggunakan malloc, untuk memanipulasi memory dinamis
     
 
@@ -33,7 +36,8 @@ int main() {
     }
 
 	// Input
-    for (i; i < jumlah_mahasiswa; i++) {
+    for (i; i < jumlah_mahasiswa; i++)
+	{
     	printf("\nMahasiswa ke-%d\n",i+1);
         printf("Masukkan ID    : ");
         scanf("%d", &mahasiswa[i].id);
@@ -51,8 +55,31 @@ int main() {
         printf("\n");
     }
     
+	// Search data
+    int search_data;
+    printf("\n--------------------------------------------");
+    printf("\nMasukkan ID mahasiswa yang ingin dicari : ");
+    scanf("%d", &search_data);
+
+    int found = 0;
+    for (int i = 0; i < jumlah_mahasiswa; i++) {
+        if (mahasiswa[i].id == search_data) {
+            found = 1;
+            printf("\n\033[33m");
+            printf("ID %d ditemukan pada mahasiswa ke-%d.", search_data, i+1);
+            printf("\n\033[0m");
+            printf("--------------------------------------------\n");
+        }else{
+		printf("\n\033[31mID tidak ditemukan\033[0m\n");
+		printf("--------------------------------------------\n");
+		}
+        
+    }
+    
     // Output
-    printf("\nData Mahasiswa\n");
+    printf("\n\033[36m");
+    printf("Data Mahasiswa");
+    printf("\n\033[0m");
     for (i = 0; i < jumlah_mahasiswa; i++)
     {
     	
